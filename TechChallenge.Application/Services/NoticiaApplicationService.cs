@@ -16,14 +16,18 @@ namespace TechChallenge.Application.Services
     {
         private readonly INoticiaDomainService _noticiaDomainService;
         private IMapper _mapper;
+        private readonly IAzureBlobApplicationService _azureBlob;
 
-        public NoticiaApplicationService(INoticiaDomainService noticiaDomainService, IMapper mapper)
+        public NoticiaApplicationService(INoticiaDomainService noticiaDomainService, IMapper mapper, IAzureBlobApplicationService azureBlob)
         {
             _noticiaDomainService = noticiaDomainService;
             _mapper = mapper;
+            _azureBlob = azureBlob;
         }
         public Task<Domain.Entities.Noticia> Inserir(NoticiaModel model)
         {
+            model.imagem  = _azureBlob.UploadFiles(model.IFormFile);
+
             Domain.Entities.Noticia noticia = _mapper.Map<Domain.Entities.Noticia>(model);
             return _noticiaDomainService.Inserir(noticia);
         }

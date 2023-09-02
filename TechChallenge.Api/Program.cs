@@ -45,6 +45,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddAuthorization();
 builder.Services.AddTransient<IUsuarioApplicationService, UsuarioApplicationService>();
 builder.Services.AddTransient<INoticiaApplicationService, NoticiaApplicationService>();
+builder.Services.AddTransient<IAzureBlobApplicationService, AzureBlobApplicationService>();
 builder.Services.AddTransient<IUsuarioDomainService, UsuarioDomainService>();
 builder.Services.AddTransient<INoticiaDomainService, NoticiaDomainService>();
 builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();

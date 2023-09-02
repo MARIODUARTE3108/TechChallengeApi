@@ -20,12 +20,13 @@ namespace TechChallenge.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CadastrarNoticia(NoticiaModel noticia)
+        public async Task<IActionResult> CadastrarNoticia([FromForm] NoticiaModel noticia)
         {
             try
             {
+
                 await _noticiaAppService.Inserir(noticia);
-                return StatusCode(200, new { message = "Usuário cadastrado com sucesso!" });
+                return StatusCode(200, new { message = "Notícia cadastrada com sucesso!" });
             }
             catch (Exception ex)
             {
