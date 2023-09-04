@@ -14,7 +14,7 @@ namespace TechChallenge.Api.Settings
                 {
                     Version = "v1",
                     Title = "Api Tech Challenge",
-                    Description = "FIAP",
+                    Description = "FIAP - BLOG",
                     Contact = new OpenApiContact { Name = "STI", Email = "" }
                 });
                 s.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
