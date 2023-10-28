@@ -51,14 +51,12 @@ namespace TechChallenge.Application.Services
             throw new ApplicationException("Usuario não cadastrado");
         }
 
-        public Task<ICollection<Usuario>> ListarTudo()
+        public async Task<ICollection<Usuario>> ListarTudo()
         {
-            var usuarios = _usuarioDomainService.ListarTudo();
-            if (usuarios.Result != null)
-            {
+            var usuarios = await _usuarioDomainService.ListarTudo();
+        
                 return usuarios;
-            }
-            throw new ApplicationException("Não possuí usuário cadastrado");
+     
         }
 
         public string GetAccessToken(LoginModel model)
