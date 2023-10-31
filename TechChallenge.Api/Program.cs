@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using TechChallenge.Api.Properties;
 using TechChallenge.Api.Settings;
 using TechChallenge.Application.Contracts;
 using TechChallenge.Application.Services;
@@ -75,6 +76,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+DatabaseManagementService.MigrationInitialisation(app);
+
 app.UseHttpsRedirection();
 app.UseAuthentication();
 
@@ -83,3 +86,5 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program { }
