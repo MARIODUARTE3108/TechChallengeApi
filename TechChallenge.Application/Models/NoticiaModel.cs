@@ -25,9 +25,5 @@ namespace TechChallenge.Application.Models
 
         [Required(ErrorMessage = "O campo Autor é obrigatório.")]
         public string Autor { get; set; }
-
-        [Required(ErrorMessage = "A imagem é obrigatória.")]
-        public IFormFile IFormFile { get; set; }
-        public string? imagem { get; set; }
     }
 }

@@ -28,4 +28,8 @@
     <ProjectReference Include="..\TechChallenge.Api\TechChallenge.Api.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Unitario\" />
+  </ItemGroup>
+
 </Project>

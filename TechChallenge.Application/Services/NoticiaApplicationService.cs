@@ -26,8 +26,6 @@ namespace TechChallenge.Application.Services
         }
         public Task<Domain.Entities.Noticia> Inserir(NoticiaModel model)
         {
-            model.imagem  = _azureBlob.UploadFiles(model.IFormFile);
-
             Domain.Entities.Noticia noticia = _mapper.Map<Domain.Entities.Noticia>(model);
             return _noticiaDomainService.Inserir(noticia);
         }

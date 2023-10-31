@@ -14,7 +14,6 @@ namespace TechChallenge.Domain.Entities
         public string Chapeu { get; set; }
         public DateTime DataPublicacao { get; set; }
         public string Autor { get; set; }
-        public string Imagem { get; set; }
         public DateTime DataCadastro { get; set; }
     }
 }

@@ -10,7 +10,7 @@ using TechChallege.Tests.Helper;
 using TechChallenge.Application.Models;
 using TechChallenge.Domain.Entities;
 
-namespace TechChallege.Tests
+namespace TechChallege.Tests.Integracao
 {
     public class UsuarioTests
     {

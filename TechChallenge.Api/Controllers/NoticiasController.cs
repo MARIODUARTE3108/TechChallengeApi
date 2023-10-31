@@ -20,7 +20,7 @@ namespace TechChallenge.Api.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CadastrarNoticia([FromForm] NoticiaModel noticia)
+        public async Task<IActionResult> CadastrarNoticia(NoticiaModel noticia)
         {
             try
             {

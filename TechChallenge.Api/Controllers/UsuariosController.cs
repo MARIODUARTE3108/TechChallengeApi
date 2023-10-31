@@ -21,8 +21,8 @@ namespace TechChallenge.Api.Controllers
         {
             try
             {
-                await _usuarioService.Inserir(model);
-                return Ok(new { message = "Usuário cadastrado com sucesso!" });
+                var usuario = await _usuarioService.Inserir(model);
+                return Ok(usuario);
             }
             catch (Exception ex)
             {
