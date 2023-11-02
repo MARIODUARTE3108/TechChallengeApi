@@ -19,24 +19,24 @@ namespace TechChallenge.Domain.Service
             return _repository.Inserir(usuario);
         }
 
-        public Task<Usuario> VerificarLogin(string email, string senha)
+        public async Task<Usuario> VerificarLogin(string email, string senha)
         {
-            return _repository.VerificarLogin(email, senha);
+            return await _repository.VerificarLogin(email, senha);
         }
 
-        public Task<Usuario> BuscarPorId(int id)
+        public async Task<Usuario> BuscarPorId(int id)
         {
-            return _repository.BuscarPorId(id);
+            return await _repository.BuscarPorId(id);
         }
 
-        public Task<Usuario> BuscarPorEmail(string email)
+        public async Task<Usuario> BuscarPorEmail(string email)
         {
-            return _repository.BuscarPorEmail(email);
+            return await _repository.BuscarPorEmail(email);
         }
 
-        public Task<ICollection<Usuario>> ListarTudo()
+        public  async Task<ICollection<Usuario>> ListarTudo()
         {
-            return _repository.ListarTudo();
+            return await _repository.ListarTudo();
         }
 
         public void Dispose()

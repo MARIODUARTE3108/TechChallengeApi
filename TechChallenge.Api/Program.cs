@@ -18,13 +18,9 @@ using TechChallenge.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var connectionString = builder.Configuration.GetConnectionString("UsuarioConnection");
+AppSettings.ConnectionStrings = builder.Configuration.GetSection("ConnectionStrings:UsuarioConnection").Value;
 string securityKey = builder.Configuration.GetSection("AppSettings:SecurityKey").Value;
-builder.Services.AddDbContext<SqlServerContext>
-    (opts =>
-    {
-        opts.UseSqlServer(connectionString);
-    });
+
 
 
 
@@ -75,8 +71,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
-DatabaseManagementService.MigrationInitialisation(app);
 
 app.UseHttpsRedirection();
 app.UseAuthentication();

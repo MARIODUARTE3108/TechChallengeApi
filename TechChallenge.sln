@@ -14,7 +14,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechChallenge.Domain", "Tec
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechChallenge.Infrastructure", "TechChallenge.Infrastructure\TechChallenge.Infrastructure.csproj", "{7797D1E5-5667-4131-A488-5C17600F2702}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechChallege.Tests", "TechChallege.Tests\TechChallege.Tests.csproj", "{801F23B6-560B-4B55-97CF-72C319DF24E0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TechChallege.Tests", "TechChallege.Tests\TechChallege.Tests.csproj", "{801F23B6-560B-4B55-97CF-72C319DF24E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TechChallenge.Core", "TechChallenge.Core\TechChallenge.Core.csproj", "{A4B9B012-F6FE-4BC4-9036-37FAE9724C17}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,6 +44,10 @@ Global
 		{801F23B6-560B-4B55-97CF-72C319DF24E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{801F23B6-560B-4B55-97CF-72C319DF24E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{801F23B6-560B-4B55-97CF-72C319DF24E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4B9B012-F6FE-4BC4-9036-37FAE9724C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A4B9B012-F6FE-4BC4-9036-37FAE9724C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A4B9B012-F6FE-4BC4-9036-37FAE9724C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4B9B012-F6FE-4BC4-9036-37FAE9724C17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

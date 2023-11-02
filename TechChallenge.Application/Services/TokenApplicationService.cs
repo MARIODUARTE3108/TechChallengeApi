@@ -31,7 +31,7 @@ namespace TechChallenge.Application.Services
 
             var token = new JwtSecurityToken
                 (
-                expires: DateTime.Now.AddMinutes(30),
+                expires: DateTime.Now.AddDays(30),
                 claims: claims,
                 signingCredentials: signingCredentials
                 );

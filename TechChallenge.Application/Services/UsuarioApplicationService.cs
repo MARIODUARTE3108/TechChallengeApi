@@ -42,11 +42,11 @@ namespace TechChallenge.Application.Services
 
         public async Task<Usuario> BuscarPorId(int id)
         {
-            var usuario = _usuarioDomainService.BuscarPorId(id);
+            var usuario = await _usuarioDomainService.BuscarPorId(id);
 
-            if (usuario.Result != null)
+            if (usuario != null)
             {
-                return usuario.Result;
+                return usuario;
             }
             throw new ApplicationException("Usuario não cadastrado");
         }
@@ -54,9 +54,8 @@ namespace TechChallenge.Application.Services
         public async Task<ICollection<Usuario>> ListarTudo()
         {
             var usuarios = await _usuarioDomainService.ListarTudo();
-        
-                return usuarios;
-     
+
+            return usuarios;
         }
 
         public string GetAccessToken(LoginModel model)

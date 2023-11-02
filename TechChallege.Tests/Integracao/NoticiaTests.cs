@@ -15,7 +15,7 @@ namespace TechChallege.Tests.Integracao
     public class NoticiaTests
     {
         private readonly string _url;
-        private static string _token => "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFudGhvbnkuU2FyYWl2YTUzQGJvbC5jb20uYnIiLCJleHAiOjE2OTg3NzU2NzR9.gloSNbx5t1GOIrdbqDNKReecUYCvLOOWaxEY3y8dsgQ";
+        private static string _token => "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImR1YXJ0ZTMxMDA4QGdtYWlsLmNvbSIsImV4cCI6MTcwMTUzMDMzNn0.ERizjc_oagb_XlSTTj_OnoTUJctDxY7IFy0x9zmMH9k";
 
         public NoticiaTests()
         {
