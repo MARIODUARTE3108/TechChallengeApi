@@ -1,0 +1,25 @@
+CREATE DATABASE blogfiap;
+GO
+
+USE blogfiap;
+GO
+
+CREATE TABLE Noticia (
+    Id INT PRIMARY KEY IDENTITY,
+    Titulo NVARCHAR(255) NOT NULL,
+    Descricao NVARCHAR(MAX) NOT NULL,
+    Chapeu NVARCHAR(255) NOT NULL,
+    DataPublicacao DATETIME NOT NULL,
+    Autor NVARCHAR(255) NOT NULL,
+    DataCadastro DATETIME NOT NULL
+);
+GO
+
+CREATE TABLE Usuario (
+    Id INT PRIMARY KEY IDENTITY,
+    Nome NVARCHAR(255) NOT NULL,
+    Email NVARCHAR(255) NOT NULL,
+    Senha NVARCHAR(255) NOT NULL,
+    DataCadastro DATETIME NOT NULL
+);
+GO
