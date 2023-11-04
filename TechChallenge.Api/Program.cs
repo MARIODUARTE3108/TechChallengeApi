@@ -22,7 +22,7 @@ AppSettings.ConnectionStrings = builder.Configuration.GetSection("ConnectionStri
 string securityKey = builder.Configuration.GetSection("AppSettings:SecurityKey").Value;
 
 
-
+builder.Services.AddApplicationInsightsTelemetry();
 
 builder.Services.AddAuthentication(options =>
 {

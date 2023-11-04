@@ -1,5 +1,7 @@
 ﻿using Bogus;
 using FluentAssertions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +9,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using TechChallege.Tests.Helper;
+using TechChallenge.Api.Settings;
 using TechChallenge.Application.Models;
 
 namespace TechChallege.Tests.Integracao
@@ -17,6 +20,10 @@ namespace TechChallege.Tests.Integracao
         public LoginTests()
         {
             _url = "/api/Auths/Login";
+            var servico = new ServiceCollection();
+            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            servico.AddSingleton<IConfiguration>(config);
+            AppSettings.ConnectionStrings = config.GetConnectionString("UsuarioConnection");
         }
         [Fact]
         public async Task Login_Post_Retun_Ok()

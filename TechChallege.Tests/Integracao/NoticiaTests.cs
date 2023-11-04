@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using TechChallege.Tests.Helper;
 using TechChallenge.Application.Models;
 using FluentAssertions;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using TechChallenge.Api.Settings;
 
 namespace TechChallege.Tests.Integracao
 {
@@ -20,6 +23,10 @@ namespace TechChallege.Tests.Integracao
         public NoticiaTests()
         {
             _url = "/api/Noticias";
+            var servico = new ServiceCollection();
+            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
+            servico.AddSingleton<IConfiguration>(config);
+            AppSettings.ConnectionStrings = config.GetConnectionString("UsuarioConnection");
         }
 
         [Fact]

@@ -106,20 +106,30 @@ namespace TechChallege.Tests.Unitario
             return noticia;
         }
         [Fact]
+        public async Task Noticia_Por_Id()
+        {
+            var faker = new Faker("pt_BR");
+            var model = new Noticia()
+            {
+                Titulo = faker.Lorem.Sentence(),
+                Descricao = faker.Lorem.Paragraphs(3),
+                Chapeu = faker.Lorem.Sentence(),
+                DataPublicacao = DateTime.Now,
+                Autor = faker.Person.FirstName
+            };
+
+            var noticia = await _noticiaDomain.Inserir(model); 
+
+            Noticia usuarioPorId = await _noticiaDomain.BuscarPorId(noticia.Id);
+
+            Assert.NotNull(usuarioPorId);
+        }
+        [Fact]
         public async Task Todas_Noticias()
         {
             ICollection<Noticia> lista = await _noticiaDomain.ListarTudo();
 
             Assert.NotNull(lista);
-        }
-        [Fact]
-        public async Task Noticia_Por_Id()
-        {
-            var noticia = new RepositoryTests().Cadastrar_Noticia();
-
-            Noticia usuarioPorId = await _noticiaDomain.BuscarPorId(noticia.Id);
-
-            Assert.NotNull(usuarioPorId);
         }
     }
 }
