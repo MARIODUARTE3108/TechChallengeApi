@@ -1,0 +1,25 @@
+version: '3.4'
+
+services:
+  minha-api-container:
+    image: ${DOCKER_REGISTRY}minha-api-image
+    build:
+      context: .
+      dockerfile: Dockerfile 
+    ports:
+      - "8080:80"
+    depends_on:
+      - sqldata
+    restart: always
+
+sqldata:
+  image: mcr.microsoft.com/mssql/server:2019-latest
+  environment:
+    - SA_PASSWORD=BlindRio#
+    - ACCEPT_EULA=Y
+  volumes:
+    - ./setup.sql:/docker-entrypoint-initdb.d/setup.sql
+    - C:\dados\volumes\mssql:/var/opt/mssql/data 
+  ports:
+    - "1450:1433"
+  command: /bin/bash -c "/opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'BlindRio#' -d master -i /docker-entrypoint-initdb.d/setup.sql"
