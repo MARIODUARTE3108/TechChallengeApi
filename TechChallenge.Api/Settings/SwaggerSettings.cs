@@ -13,7 +13,7 @@ namespace TechChallenge.Api.Settings
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Api Tech Challenge",
+                    Title = "Api Tech Challenge F3",
                     Description = "FIAP - BLOG",
                     Contact = new OpenApiContact { Name = "STI", Email = "" }
                 });
