@@ -1,3 +1,4 @@
+using MassTransit;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -19,8 +20,19 @@ using TechChallenge.Infrastructure.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 AppSettings.ConnectionStrings = builder.Configuration.GetSection("ConnectionStrings:UsuarioConnection").Value;
+AppSettings.ConnectionStringServiceBus = builder.Configuration.GetSection("AzureServiceBus:ConnectionString").Value;
+AppSettings.NomeFilaServiceBus = builder.Configuration.GetSection("AzureServiceBus:NomeFila").Value;
+
 string securityKey = builder.Configuration.GetSection("AppSettings:SecurityKey").Value;
 
+builder.Services.AddMassTransit((x =>
+{
+    x.UsingAzureServiceBus((context, config) =>
+    {
+        config.Host(AppSettings.ConnectionStringServiceBus);
+    });
+}
+));
 
 builder.Services.AddApplicationInsightsTelemetry();
 

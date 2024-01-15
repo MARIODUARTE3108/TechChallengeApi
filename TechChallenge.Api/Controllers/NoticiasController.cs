@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TechChallenge.Api.Settings;
 using TechChallenge.Application.Contracts;
 using TechChallenge.Application.Models;
 using TechChallenge.Domain.Entities;
@@ -9,14 +11,16 @@ namespace TechChallenge.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = "Bearer")]
+   // [Authorize(AuthenticationSchemes = "Bearer")]
     public class NoticiasController : ControllerBase
     {
         private readonly INoticiaApplicationService _noticiaAppService;
+        private readonly IBus _bus;
 
-        public NoticiasController(INoticiaApplicationService noticiaAppService)
+        public NoticiasController(INoticiaApplicationService noticiaAppService, IBus bus)
         {
             _noticiaAppService = noticiaAppService;
+            _bus = bus;
         }
 
         [HttpPost]
@@ -24,8 +28,8 @@ namespace TechChallenge.Api.Controllers
         {
             try
             {
-
-                await _noticiaAppService.Inserir(noticia);
+                var endpont = await _bus.GetSendEndpoint(new Uri($"queue:{AppSettings.NomeFilaServiceBus}"));
+                await endpont.Send(noticia);
                 return StatusCode(200, new { message = "Notícia cadastrada com sucesso!" });
             }
             catch (Exception ex)
