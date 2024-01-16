@@ -13,9 +13,9 @@ IHost host = Host.CreateDefaultBuilder(args)
     .ConfigureServices((hostContext, services) =>
     {
         var configuration = hostContext.Configuration;
-        AppSettings.ConnectionStringServiceBus = configuration.GetSection("AzureServiceBus:ConnectionString").Value;
-        AppSettings.NomeFilaServiceBus = configuration.GetSection("AzureServiceBus:NomeFila").Value;
-        AppSettings.ConnectionStrings = configuration.GetSection("ConnectionStrings:UsuarioConnection").Value;
+        AppSettings.ConnectionStringServiceBus = configuration.GetSection("AzureServiceBus:ConnectionString").Value ?? string.Empty;
+        AppSettings.NomeFilaServiceBus = configuration.GetSection("AzureServiceBus:NomeFila").Value ?? string.Empty;
+        AppSettings.ConnectionStrings = configuration.GetSection("ConnectionStrings:UsuarioConnection").Value ?? string.Empty;
 
         services.AddTransient<IUsuarioApplicationService, UsuarioApplicationService>();
         services.AddTransient<INoticiaApplicationService, NoticiaApplicationService>();

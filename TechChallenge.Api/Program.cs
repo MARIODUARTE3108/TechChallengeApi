@@ -19,11 +19,11 @@ using TechChallenge.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-AppSettings.ConnectionStrings = builder.Configuration.GetSection("ConnectionStrings:UsuarioConnection").Value;
-AppSettings.ConnectionStringServiceBus = builder.Configuration.GetSection("AzureServiceBus:ConnectionString").Value;
-AppSettings.NomeFilaServiceBus = builder.Configuration.GetSection("AzureServiceBus:NomeFila").Value;
+AppSettings.ConnectionStrings = builder.Configuration.GetSection("ConnectionStrings:UsuarioConnection").Value ?? string.Empty;
+AppSettings.ConnectionStringServiceBus = builder.Configuration.GetSection("AzureServiceBus:ConnectionString").Value ?? string.Empty;
+AppSettings.NomeFilaServiceBus = builder.Configuration.GetSection("AzureServiceBus:NomeFila").Value ?? string.Empty;
 
-string securityKey = builder.Configuration.GetSection("AppSettings:SecurityKey").Value;
+string securityKey = builder.Configuration.GetSection("AppSettings:SecurityKey").Value ?? string.Empty;
 
 builder.Services.AddMassTransit((x =>
 {
