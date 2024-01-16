@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-TechChallenge.WorkerService-a13a4749-9fde-46f2-8ace-74e6b768901c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MassTransit.Azure.ServiceBus.Core" Version="8.1.3" />
+    <PackageReference Include="Microsoft.Azure.ServiceBus" Version="5.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TechChallenge.Application\TechChallenge.Application.csproj" />
+    <ProjectReference Include="..\TechChallenge.Core\TechChallenge.Core.csproj" />
+    <ProjectReference Include="..\TechChallenge.Domain\TechChallenge.Domain.csproj" />
+  </ItemGroup>
+</Project>

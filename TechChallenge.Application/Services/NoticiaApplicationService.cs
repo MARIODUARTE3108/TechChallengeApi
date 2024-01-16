@@ -1,9 +1,12 @@
 ﻿using AutoMapper;
+using Azure.Messaging.ServiceBus;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TechChallenge.Api.Settings;
 using TechChallenge.Application.Contracts;
 using TechChallenge.Application.Models;
 using TechChallenge.Domain.Contracts.Services;
@@ -22,7 +25,7 @@ namespace TechChallenge.Application.Services
             _noticiaDomainService = noticiaDomainService;
             _mapper = mapper;
         }
-        public Task<Domain.Entities.Noticia> Inserir(NoticiaModel model)
+        public Task<Domain.Entities.Noticia> Inserir(Domain.Entities.Noticia model)
         {
             Domain.Entities.Noticia noticia = _mapper.Map<Domain.Entities.Noticia>(model);
             return _noticiaDomainService.Inserir(noticia);
@@ -42,5 +45,19 @@ namespace TechChallenge.Application.Services
         {
             _noticiaDomainService.Dispose();
         }
+
+        public async Task<NoticiaModel> Enviar(NoticiaModel noticia)
+        {
+            var mensagemJson = JsonConvert.SerializeObject(noticia);
+            var mensagem = new ServiceBusMessage(Encoding.UTF8.GetBytes(mensagemJson));
+
+            await using (var serviceBusClient = new ServiceBusClient(AppSettings.ConnectionStringServiceBus))
+            {
+                var sender = serviceBusClient.CreateSender(AppSettings.NomeFilaServiceBus);
+                await sender.SendMessageAsync(mensagem);
+            }
+            return noticia;
+        }
+
     }
 }

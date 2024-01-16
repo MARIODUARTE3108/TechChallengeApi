@@ -10,8 +10,9 @@ namespace TechChallenge.Application.Contracts
 {
     public interface INoticiaApplicationService : IDisposable
     {
-        Task<Noticia> Inserir(NoticiaModel noticia);
+        Task<Noticia> Inserir(Noticia noticia);
         Task<Noticia> BuscarPorId(int id);
         Task<ICollection<Noticia>> ListarTudo();
+        Task<NoticiaModel> Enviar(NoticiaModel noticia);
     }
 }

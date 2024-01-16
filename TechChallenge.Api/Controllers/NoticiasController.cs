@@ -1,11 +1,15 @@
-﻿using MassTransit;
+﻿using Azure.Messaging.ServiceBus;
+using MassTransit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Text;
 using TechChallenge.Api.Settings;
 using TechChallenge.Application.Contracts;
 using TechChallenge.Application.Models;
 using TechChallenge.Domain.Entities;
+using XAct.Messages;
 
 namespace TechChallenge.Api.Controllers
 {
@@ -15,12 +19,10 @@ namespace TechChallenge.Api.Controllers
     public class NoticiasController : ControllerBase
     {
         private readonly INoticiaApplicationService _noticiaAppService;
-        private readonly IBus _bus;
 
         public NoticiasController(INoticiaApplicationService noticiaAppService, IBus bus)
         {
             _noticiaAppService = noticiaAppService;
-            _bus = bus;
         }
 
         [HttpPost]
@@ -28,8 +30,8 @@ namespace TechChallenge.Api.Controllers
         {
             try
             {
-                var endpont = await _bus.GetSendEndpoint(new Uri($"queue:{AppSettings.NomeFilaServiceBus}"));
-                await endpont.Send(noticia);
+                await _noticiaAppService.Enviar(noticia);
+
                 return StatusCode(200, new { message = "Notícia cadastrada com sucesso!" });
             }
             catch (Exception ex)

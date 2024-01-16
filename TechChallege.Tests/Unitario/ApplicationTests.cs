@@ -111,7 +111,7 @@ namespace TechChallege.Tests.Unitario
         public async Task<Noticia> Cadastrar_Noticia()
         {
             var faker = new Faker("pt_BR");
-            var model = new NoticiaModel()
+            var model = new Noticia()
             {
                 Titulo = faker.Lorem.Sentence(),
                 Descricao = faker.Lorem.Paragraphs(3),
