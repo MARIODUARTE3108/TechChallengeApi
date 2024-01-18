@@ -69,12 +69,12 @@ namespace TechChallenge.WorkerService
             if (noticia != null)
             {
                 await _noticiaAppService.Inserir(noticia);
-                Console.WriteLine($"Notícia {noticia.Chapeu} criada por {noticia.Autor}, cadastrada com sucesso!");
+                _logger.LogInformation($"Notícia {noticia.Chapeu} criada por {noticia.Autor}, cadastrada com sucesso!");
                 await receiver.CompleteMessageAsync(message);
             }
             else
             {
-                Console.WriteLine($"Erro ao cadastrar Notícia!");
+                _logger.LogInformation($"Erro ao cadastrar Notícia!");
                 await receiver.AbandonMessageAsync(message);
             }
         }

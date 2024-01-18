@@ -15,7 +15,7 @@ namespace TechChallenge.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize(AuthenticationSchemes = "Bearer")]
+    [Authorize(AuthenticationSchemes = "Bearer")]
     public class NoticiasController : ControllerBase
     {
         private readonly INoticiaApplicationService _noticiaAppService;
